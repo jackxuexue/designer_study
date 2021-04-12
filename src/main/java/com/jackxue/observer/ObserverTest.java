@@ -17,14 +17,14 @@ public class ObserverTest {
 }
 
 class KeyEvent{
-    private Button source;
+    private Object source;
     private String type;
     public KeyEvent(String type, Button source){
         this.source = source;
         this.type = type;
     }
 
-    public Button getSource() {
+    public Object getSource()  {
         return source;
     }
 
@@ -38,6 +38,14 @@ class KeyEvent{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "KeyEvent{" +
+                "source=" + source +
+                ", type='" + type + '\'' +
+                '}';
     }
 }
 
@@ -73,13 +81,13 @@ interface  Observer{
 class ButtonObserver implements Observer{
     @Override
     public void eventFired(KeyEvent event) {
-        System.out.println("o1 source:" + event.getSource().name + " type:"+ event.getType());
+        System.out.println(event.getSource());
     }
 }
 class ButtonObserver1 implements Observer{
     @Override
     public void eventFired(KeyEvent event) {
-        System.out.println("o2 source:" + event.getSource().name + " type:"+ event.getType());
+        System.out.println(event.getSource());
     }
 }
 
